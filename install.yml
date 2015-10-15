@@ -1,0 +1,12 @@
+- name: Install Middlewares
+  tags: install
+  hosts: all
+  remote_user: pi
+  sudo: yes
+  tasks:
+    - apt:
+        name: "{{item}}"
+        update_cache: yes
+        state: present
+      with_items:
+        - tree
