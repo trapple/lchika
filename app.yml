@@ -1,0 +1,6 @@
+- name: Upload App
+  tags: app
+  hosts: all
+  remote_user: pi
+  tasks:
+    - synchronize: src=src/ dest=~/sandbox
