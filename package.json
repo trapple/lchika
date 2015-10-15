@@ -1,0 +1,22 @@
+{
+  "name": "lchika",
+  "version": "0.0.1",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/trapple/lchika.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/trapple/lchika/issues"
+  },
+  "homepage": "https://github.com/trapple/lchika#readme",
+  "dependencies": {
+    "gpio": "^0.2.7"
+  }
+}
