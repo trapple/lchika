@@ -2,24 +2,27 @@
 
 const gpio = require("gpio");
 
-let isRunning = 1;
+const channel = 4;
+const interval = 50;
 let setId;
 
-const gpio4 = gpio.export(4, {
+const gpio4 = gpio.export(channel, {
   direction: "out",
   ready(){
-    let value = 1;
     setId = setInterval(() => {
-      this.set(value);
-      value++;
-      value %= 2;
-    }, 50);
+      this.set();
+      setTimeout(() => {
+        this.reset(); 
+      }, interval);
+    }, interval * 2);
   }
 });
 
 process.on("SIGINT", () => {
-  gpio4.set(0);
+  gpio4.reset();
   clearInterval(setId);
-  gpio4.unexport();
+  setTimeout(() => {
+    gpio4.unexport();
+  }, interval + 1);
   console.log("\nBye!!");
 });
