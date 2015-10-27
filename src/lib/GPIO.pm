@@ -26,7 +26,7 @@ sub export {
   my $self = shift;
 
   open my $fh, '>', $GPIO_EXPORT || croak $!;
-  warn "export $self->channel > $GPIO_EXPORT" if $self->verbose;
+  print STDOUT sprintf("export %s > %s\n", $self->channel, $GPIO_EXPORT) if $self->verbose;
   print $fh $self->channel;
   close $fh;
 
@@ -45,14 +45,14 @@ sub init {
 sub set {
   my $self = shift;
   my $val = $_[0] ? 1 : 0; 
-  warn "set value = $val" if $self->verbose;
+  print STDOUT "set value = $val\n" if $self->verbose;
   print {$self->value} $val;
 }
 
 sub unexport {
   my $self = shift;
   open my $fh, '>', $GPIO_UNEXPORT || croak $!;
-  print "unexport $self->channel > $GPIO_UNEXPORT", "\n";
+  print STDOUT sprintf("unexport %s > %s", $self->channel, $GPIO_UNEXPORT);
   print $fh $self->channel;
   close $fh;
 }
