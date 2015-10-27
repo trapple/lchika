@@ -4,4 +4,4 @@
   remote_user: pi
   tasks:
     - synchronize: src=./package.json dest=~/
-    - synchronize: src=src/ dest=~/sandbox
+    - synchronize: src=src/ dest=~/sandbox/lchika
