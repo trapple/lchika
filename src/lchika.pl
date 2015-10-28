@@ -3,22 +3,21 @@ use warnings;
 use utf8;
 use Carp;
 use 5.020;
-use lib 'lib';
-use GPIO;
+use RaspberryPi::GPIO;
 use Time::HiRes;
 use AnyEvent;
 
 main();
 
 sub main {
+  my $cv = AE::cv;
 
-  my $gpio = GPIO->new({
+  my $gpio = RaspberryPi::GPIO->new({
     channel => 17,
     direction => "out",
     verbose => 1
   });
 
-  my $cv = AE::cv;
   my $value = 0;
   my $w; $w = AE::timer 0, 0.5, sub {
     my $v = $value % 2;
